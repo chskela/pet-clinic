@@ -53,5 +53,11 @@ tasks.withType<Test> {
 configure<ReleaseExtension> {
 	with(git) {
 		requireBranch.set("master")
+		commitVersionFileOnly.set(false)
+	}
+
+	with(svn){
+		username.set(null as String?)
+		password.set(null as String?)
 	}
 }
