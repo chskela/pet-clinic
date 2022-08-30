@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import net.researchgate.release.ReleaseExtension
 
 plugins {
 	id("org.springframework.boot") version "2.7.3"
@@ -48,4 +49,9 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+configure<ReleaseExtension> {
+	with(git) {
+		requireBranch.set("master")
+	}
 }
