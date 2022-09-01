@@ -2,11 +2,6 @@ package com.chskela.petclinic.services
 
 import com.chskela.petclinic.model.Pet
 
-interface PetService {
+interface PetService : CrudService<Pet, Long> {
 
-    fun findById(id: Long): Pet
-
-    fun save(pet: Pet)
-
-    fun findAll(): Set<Pet>
 }
