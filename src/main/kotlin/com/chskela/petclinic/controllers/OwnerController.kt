@@ -3,10 +3,10 @@ package com.chskela.petclinic.controllers
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
 
-@RequestMapping("/vets")
+@RequestMapping("/owners")
 @Controller
-class VetController {
+class OwnerController {
 
     @RequestMapping(*arrayOf("", "/", "/index", "/index.html"))
-    fun listVets() = "vets/index"
+    fun listOwners() = "owners/index"
 }
