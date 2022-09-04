@@ -11,7 +11,7 @@ class OwnerServiceMap : AbstractMapService<Owner, Long>(), OwnerService{
     }
 
     override fun save(entity: Owner): Owner {
-        super.save(entity.id ?: 0, entity)
+        super.save(entity.id, entity)
         return entity
     }
 }
