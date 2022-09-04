@@ -4,8 +4,6 @@ import com.chskela.petclinic.model.Owner
 import com.chskela.petclinic.model.Vet
 import com.chskela.petclinic.services.OwnerService
 import com.chskela.petclinic.services.VetService
-import com.chskela.petclinic.services.map.OwnerServiceMap
-import com.chskela.petclinic.services.map.VetServiceMap
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
 
@@ -24,7 +22,7 @@ class DataLoader(private val ownerService: OwnerService, private val vetService:
         val vet1 = Vet(1L, "Same", "Axe")
         vetService.save(vet1)
 
-        val vet2 = Vet(2L, "Same", "Axe")
+        val vet2 = Vet(2L, "Same2", "Axe2")
         vetService.save(vet2)
 
         println("Loading vets...")
