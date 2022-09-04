@@ -10,10 +10,7 @@ import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
 
 @Component
-class DataLoader(
-    private val ownerService: OwnerService = OwnerServiceMap(),
-    private val vetService: VetService = VetServiceMap()
-) : CommandLineRunner {
+class DataLoader(private val ownerService: OwnerService, private val vetService: VetService) : CommandLineRunner {
 
     override fun run(vararg args: String?) {
         val owner1 = Owner(1L, "Michael", "Weston")
