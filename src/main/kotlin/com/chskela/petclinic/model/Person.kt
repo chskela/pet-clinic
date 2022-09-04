@@ -1,4 +1,4 @@
 package com.chskela.petclinic.model
 
-open class Person(val firstName: String = "", val lastString: String = "") : BaseEntity() {
+open class Person(override val id: Long, open val firstName: String, open val lastName: String) : BaseEntity(id) {
 }
