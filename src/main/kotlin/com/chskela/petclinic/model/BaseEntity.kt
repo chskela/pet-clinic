@@ -1,4 +1,4 @@
 package com.chskela.petclinic.model
 
-open class BaseEntity(open val id: Long? = null) {
+open class BaseEntity(open var id: Long= -1) {
 }

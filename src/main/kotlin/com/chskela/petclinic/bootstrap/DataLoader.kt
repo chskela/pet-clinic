@@ -11,18 +11,19 @@ import org.springframework.stereotype.Component
 class DataLoader(private val ownerService: OwnerService, private val vetService: VetService) : CommandLineRunner {
 
     override fun run(vararg args: String?) {
-        val owner1 = Owner(1L, "Michael", "Weston")
+        val owner1 = Owner( firstName = "Michael", lastName = "Weston")
         ownerService.save(owner1)
 
-        val owner2 = Owner(2L, "Fiona", "Glenanne")
+        val owner2 = Owner( firstName = "Fiona", lastName = "Glenanne")
+        println(owner2)
         ownerService.save(owner2)
 
         println("Loading owners...")
 
-        val vet1 = Vet(1L, "Same", "Axe")
+        val vet1 = Vet( firstName = "Same", lastName = "Axe")
         vetService.save(vet1)
 
-        val vet2 = Vet(2L, "Same2", "Axe2")
+        val vet2 = Vet(firstName =  "Same2", lastName = "Axe2")
         vetService.save(vet2)
 
         println("Loading vets...")
