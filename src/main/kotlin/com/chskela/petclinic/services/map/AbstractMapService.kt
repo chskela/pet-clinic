@@ -9,7 +9,7 @@ abstract class AbstractMapService<T, ID> {
     fun findById(id: ID): T? = map[id]
 
     fun save(id: ID, entity: T): T {
-        map.plus(id to entity)
+        map[id] = entity
         return entity
     }
 
