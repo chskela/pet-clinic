@@ -1,5 +1,10 @@
 package com.chskela.petclinic.model
 
-data class Vet(override var id: Long = -1L, override val firstName: String, override val lastName: String) :
+data class Vet(
+    override var id: Long = -1L,
+    override val firstName: String,
+    override val lastName: String,
+    val specialties: Set<Specialty> = mutableSetOf()
+) :
     Person(id, firstName, lastName) {
 }
