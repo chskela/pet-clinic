@@ -1,6 +1,7 @@
 package com.chskela.petclinic.bootstrap
 
 import com.chskela.petclinic.model.Owner
+import com.chskela.petclinic.model.Pet
 import com.chskela.petclinic.model.PetType
 import com.chskela.petclinic.model.Vet
 import com.chskela.petclinic.services.OwnerService
@@ -8,6 +9,7 @@ import com.chskela.petclinic.services.PetTypeService
 import com.chskela.petclinic.services.VetService
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
+import java.time.LocalDate
 
 @Component
 class DataLoader(
@@ -24,11 +26,36 @@ class DataLoader(
 
         println("Loading PetType...")
 
-        val owner1 = Owner(firstName = "Michael", lastName = "Weston")
-        ownerService.save(owner1)
+        val owner1 = Owner(
+            firstName = "Michael",
+            lastName = "Weston",
+            address = "123 Street",
+            city = "Miami",
+            telephone = "1231231234",
+        )
 
-        val owner2 = Owner(firstName = "Fiona", lastName = "Glenanne")
-        ownerService.save(owner2)
+        val mikes = Pet(
+            name = "Rosco",
+            petType = savedDogPetType,
+            owner = owner1,
+            birthDate = LocalDate.now()
+        )
+        ownerService.save(owner1.copy(pets = owner1.pets.plus(mikes)))
+
+        val owner2 = Owner(
+            firstName = "Fiona",
+            lastName = "Glenanne",
+            address = "123 Street2",
+            city = "Miami2",
+            telephone = "5645645645456"
+        )
+        val fiona = Pet(
+            name = "Cat",
+            petType = savedCatPetType,
+            owner = owner2,
+            birthDate = LocalDate.now()
+        )
+        ownerService.save(owner2.copy(pets = owner2.pets.plus(fiona)))
 
         println("Loading owners...")
 

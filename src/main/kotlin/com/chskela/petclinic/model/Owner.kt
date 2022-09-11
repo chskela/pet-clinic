@@ -7,7 +7,7 @@ data class Owner(
     val address: String = "",
     val city: String = "",
     val telephone: String = "",
-    val pets: Set<Pet> = mutableSetOf()
+    val pets: Set<Pet> = setOf()
 ) :
     Person(id, firstName, lastName) {
 }

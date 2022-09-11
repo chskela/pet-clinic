@@ -11,7 +11,7 @@ abstract class AbstractMapService<T : BaseEntity> {
 
     fun findById(id: Long): T? = map[id]
 
-    fun save(entity: T): T {
+    open fun save(entity: T): T {
         if (entity.id == -1L) {
             entity.id = getNextId()
         }
