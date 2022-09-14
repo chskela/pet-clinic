@@ -8,4 +8,9 @@ class IndexController {
 
     @RequestMapping(*arrayOf("", "/", "index", "index.html"))
     fun index() = "index"
+
+    @RequestMapping("/oups")
+    fun oupsHandler(): String {
+        return "notimplemented"
+    }
 }
