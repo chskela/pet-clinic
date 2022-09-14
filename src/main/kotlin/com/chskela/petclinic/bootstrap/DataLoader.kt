@@ -1,11 +1,9 @@
 package com.chskela.petclinic.bootstrap
 
-import com.chskela.petclinic.model.Owner
-import com.chskela.petclinic.model.Pet
-import com.chskela.petclinic.model.PetType
-import com.chskela.petclinic.model.Vet
+import com.chskela.petclinic.model.*
 import com.chskela.petclinic.services.OwnerService
 import com.chskela.petclinic.services.PetTypeService
+import com.chskela.petclinic.services.SpecialtyService
 import com.chskela.petclinic.services.VetService
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
@@ -15,16 +13,28 @@ import java.time.LocalDate
 class DataLoader(
     private val ownerService: OwnerService,
     private val vetService: VetService,
-    private val petTypeService: PetTypeService
+    private val petTypeService: PetTypeService,
+    private val specialtyService: SpecialtyService
 ) : CommandLineRunner {
 
     override fun run(vararg args: String?) {
 
+        if (petTypeService.findAll().isEmpty()){
+            loadData()
+        }
+    }
+
+    private fun loadData() {
         val savedDogPetType = petTypeService.save(PetType(name = "Dog"))
 
         val savedCatPetType = petTypeService.save(PetType(name = "Cat"))
 
         println("Loading PetType...")
+
+
+        val saveRadiology = specialtyService.save(Specialty(description = "radiology"))
+        val saveSurgery = specialtyService.save(Specialty(description = "surgery"))
+        val saveDentistry = specialtyService.save(Specialty(description = "dentistry"))
 
         val owner1 = Owner(
             firstName = "Michael",
@@ -59,10 +69,10 @@ class DataLoader(
 
         println("Loading owners...")
 
-        val vet1 = Vet(firstName = "Same", lastName = "Axe")
+        val vet1 = Vet(firstName = "Same", lastName = "Axe", specialties = setOf(saveRadiology))
         vetService.save(vet1)
 
-        val vet2 = Vet(firstName = "Same2", lastName = "Axe2")
+        val vet2 = Vet(firstName = "Same2", lastName = "Axe2", specialties = setOf(saveDentistry))
         vetService.save(vet2)
 
         println("Loading vets...")
