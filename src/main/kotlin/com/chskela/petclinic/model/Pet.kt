@@ -2,11 +2,7 @@ package com.chskela.petclinic.model
 
 import org.hibernate.Hibernate
 import java.time.LocalDate
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.JoinColumn
-import javax.persistence.ManyToOne
-import javax.persistence.Table
+import javax.persistence.*
 
 
 @Entity
@@ -26,7 +22,10 @@ data class Pet(
     val owner: Owner,
 
     @Column(name = "birth_date")
-    val birthDate: LocalDate
+    val birthDate: LocalDate,
+
+    @OneToMany(cascade = [CascadeType.ALL], mappedBy = "pet")
+    val visits: Set<Visit> = setOf()
 ) : BaseEntity(id) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
