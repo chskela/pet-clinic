@@ -22,7 +22,7 @@ data class Pet(
     val petType: PetType,
 
     @ManyToOne
-    @JoinColumn(name = "owner_id", )
+    @JoinColumn(name = "owner_id")
     val owner: Owner,
 
     @Column(name = "birth_date")
