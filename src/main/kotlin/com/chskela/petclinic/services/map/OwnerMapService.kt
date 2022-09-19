@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Service
 
 @Service
-@Profile("map")
+@Profile("default","map")
 class OwnerMapService(private val petTypeService: PetTypeService, private val petService: PetService) :
     AbstractMapService<Owner>(), OwnerService {
     override fun findByLastName(lastName: String): Owner {

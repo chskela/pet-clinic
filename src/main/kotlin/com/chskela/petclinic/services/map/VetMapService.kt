@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Service
 
 @Service
-@Profile("map")
+@Profile("default","map")
 class VetMapService(private val specialtyService: SpecialtyService) : AbstractMapService<Vet>(), VetService {
 
     override fun save(entity: Vet): Vet {
