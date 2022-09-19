@@ -4,4 +4,6 @@ import com.chskela.petclinic.model.Owner
 import org.springframework.data.repository.CrudRepository
 
 interface OwnerRepository : CrudRepository<Owner, Long> {
+
+    fun findByLastName(lastName: String) : Owner
 }
