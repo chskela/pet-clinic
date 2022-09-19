@@ -8,7 +8,7 @@ import javax.persistence.Table
 @Entity
 @Table(name = "types")
 data class PetType(
-    override var id: Long = -1L,
+    override var id: Long? = null,
 
     @Column(name = "name")
     val name: String
@@ -18,7 +18,7 @@ data class PetType(
         if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
         other as PetType
 
-        return id == other.id
+        return id != null && id == other.id
     }
 
     override fun hashCode(): Int = javaClass.hashCode()

@@ -12,11 +12,13 @@ abstract class AbstractMapService<T : BaseEntity> {
     fun findById(id: Long): T? = map[id]
 
     open fun save(entity: T): T {
-        if (entity.id == -1L) {
+        if (entity.id == null) {
             entity.id = getNextId()
         }
 
-        map[entity.id] = entity
+        entity.id?.let {
+            map[it] = entity
+        }
 
         return entity
     }

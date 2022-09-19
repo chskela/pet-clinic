@@ -10,7 +10,7 @@ import javax.persistence.Table
 @Entity
 @Table(name = "owners")
 data class Owner(
-    override var id: Long = -1L,
+    override var id: Long? = null,
     override val firstName: String,
     override val lastName: String,
 
@@ -23,6 +23,7 @@ data class Owner(
     @Column(name = "telephone")
     val telephone: String = "",
 
+    // TODO remove cascade
     @OneToMany(cascade = [CascadeType.ALL], mappedBy = "owner")
     val pets: Set<Pet> = setOf()
 ) :
@@ -32,7 +33,7 @@ data class Owner(
         if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
         other as Owner
 
-        return id == other.id
+        return id != null && id == other.id
     }
 
     override fun hashCode(): Int = javaClass.hashCode()

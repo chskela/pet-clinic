@@ -14,7 +14,7 @@ class VetMapService(private val specialtyService: SpecialtyService) : AbstractMa
         return super.save(
             if (entity.specialties.isNotEmpty()) {
                 entity.copy(specialties = entity.specialties.map { specialty ->
-                    if (specialty.id == -1L) {
+                    if (specialty.id == null) {
                         specialtyService.save(specialty)
                     } else specialty
                 }.toSet())

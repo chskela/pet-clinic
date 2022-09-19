@@ -5,7 +5,7 @@ import javax.persistence.MappedSuperclass
 
 @MappedSuperclass
 open class Person(
-    override var id: Long,
+    override var id: Long?,
 
     @Column(name = "first_name")
     open val firstName: String,

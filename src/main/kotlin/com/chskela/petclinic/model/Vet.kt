@@ -6,7 +6,7 @@ import javax.persistence.*
 @Entity
 @Table(name = "vets")
 data class Vet(
-    override var id: Long = -1L,
+    override var id: Long? = null,
     override val firstName: String,
     override val lastName: String,
 
@@ -24,7 +24,7 @@ data class Vet(
         if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
         other as Vet
 
-        return id == other.id
+        return id != null && id == other.id
     }
 
     override fun hashCode(): Int = javaClass.hashCode()

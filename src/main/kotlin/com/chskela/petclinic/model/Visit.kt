@@ -11,7 +11,7 @@ import javax.persistence.Table
 @Entity
 @Table(name = "visits")
 data class Visit(
-    override var id: Long = -1L,
+    override var id: Long? = null,
 
     @Column(name = "date")
     val localDate: LocalDate,
@@ -22,14 +22,13 @@ data class Visit(
     @ManyToOne
     @JoinColumn(name = "pet_id")
     val pet: Pet
-) :
-    BaseEntity(id) {
+) :  BaseEntity(id) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
         other as Visit
 
-        return id == other.id
+        return id != null && id == other.id
     }
 
     override fun hashCode(): Int = javaClass.hashCode()

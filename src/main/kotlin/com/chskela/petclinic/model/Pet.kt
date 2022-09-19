@@ -8,7 +8,7 @@ import javax.persistence.*
 @Entity
 @Table(name = "pets")
 data class Pet(
-    override var id: Long = -1L,
+    override var id: Long? = null,
 
     @Column(name = "name")
     val name: String,
@@ -17,7 +17,7 @@ data class Pet(
     @JoinColumn(name = "type_id")
     val petType: PetType,
 
-    @ManyToOne
+    @ManyToOne(cascade = [CascadeType.ALL])
     @JoinColumn(name = "owner_id")
     val owner: Owner,
 
@@ -32,7 +32,7 @@ data class Pet(
         if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
         other as Pet
 
-        return id == other.id
+        return id != null && id == other.id
     }
 
     override fun hashCode(): Int = javaClass.hashCode()
@@ -41,6 +41,7 @@ data class Pet(
     override fun toString(): String {
         return this::class.simpleName + "(id = $id , name = $name , petType = $petType , owner = $owner , birthDate = $birthDate )"
     }
+
 
     companion object {
         fun notFound(message: String = "Not found"): Pet = Pet(

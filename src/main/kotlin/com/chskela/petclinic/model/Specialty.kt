@@ -9,7 +9,7 @@ import javax.persistence.Table
 @Entity
 @Table(name = "specialties")
 data class Specialty(
-    override var id: Long = -1L,
+    override var id: Long? = null,
 
     @Column(name = "description")
     val description: String,
@@ -23,7 +23,7 @@ data class Specialty(
         if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
         other as Specialty
 
-        return id == other.id
+        return id != null && id == other.id
     }
 
     override fun hashCode(): Int = javaClass.hashCode()

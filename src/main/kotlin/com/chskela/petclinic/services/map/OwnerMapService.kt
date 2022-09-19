@@ -19,11 +19,11 @@ class OwnerMapService(private val petTypeService: PetTypeService, private val pe
         return super.save(
             if (entity.pets.isNotEmpty()) {
                 entity.copy(pets = entity.pets.map { pet ->
-                    val candidate = if (pet.id == -1L) {
+                    val candidate = if (pet.id == null) {
                         petService.save(pet)
                     } else pet
 
-                    if (candidate.petType.id == -1L) {
+                    if (candidate.petType.id == null) {
                         candidate.copy(petType = petTypeService.save(candidate.petType))
                     } else candidate
 
