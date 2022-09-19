@@ -1,10 +1,7 @@
 package com.chskela.petclinic.bootstrap
 
 import com.chskela.petclinic.model.*
-import com.chskela.petclinic.services.OwnerService
-import com.chskela.petclinic.services.PetTypeService
-import com.chskela.petclinic.services.SpecialtyService
-import com.chskela.petclinic.services.VetService
+import com.chskela.petclinic.services.*
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
 import java.time.LocalDate
@@ -14,7 +11,8 @@ class DataLoader(
     private val ownerService: OwnerService,
     private val vetService: VetService,
     private val petTypeService: PetTypeService,
-    private val specialtyService: SpecialtyService
+    private val specialtyService: SpecialtyService,
+    private val visitService: VisitService
 ) : CommandLineRunner {
 
     override fun run(vararg args: String?) {
@@ -68,6 +66,9 @@ class DataLoader(
         ownerService.save(owner2.copy(pets = owner2.pets.plus(fiona)))
 
         println("Loading owners...")
+
+        val catVisit = Visit(pet = fiona, localDate = LocalDate.now(), description = "Test fiona")
+        visitService.save(catVisit)
 
         val vet1 = Vet(firstName = "Same", lastName = "Axe", specialties = setOf(saveRadiology))
         vetService.save(vet1)
