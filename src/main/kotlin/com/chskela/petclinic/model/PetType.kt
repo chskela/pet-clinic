@@ -28,4 +28,8 @@ data class PetType(
         return this::class.simpleName + "(id = $id , name = $name )"
     }
 
+    companion object {
+        fun notFound(message: String = "Not found"): PetType = PetType(name = message)
+    }
+
 }

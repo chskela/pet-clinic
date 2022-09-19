@@ -41,4 +41,8 @@ data class Owner(
     override fun toString(): String {
         return this::class.simpleName + "(id = $id , firstName = $firstName , lastName = $lastName , address = $address , city = $city , telephone = $telephone )"
     }
+
+    companion object{
+        fun notFound(message: String = "Not found"): Owner = Owner(firstName = message, lastName = message)
+    }
 }

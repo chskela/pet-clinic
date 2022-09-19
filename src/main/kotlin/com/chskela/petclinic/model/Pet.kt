@@ -41,4 +41,13 @@ data class Pet(
     override fun toString(): String {
         return this::class.simpleName + "(id = $id , name = $name , petType = $petType , owner = $owner , birthDate = $birthDate )"
     }
+
+    companion object {
+        fun notFound(message: String = "Not found"): Pet = Pet(
+            name = message,
+            owner = Owner.notFound(),
+            petType = PetType.notFound(),
+            birthDate = LocalDate.now()
+        )
+    }
 }

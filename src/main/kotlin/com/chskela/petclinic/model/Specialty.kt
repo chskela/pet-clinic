@@ -32,4 +32,8 @@ data class Specialty(
     override fun toString(): String {
         return this::class.simpleName + "(id = $id , description = $description )"
     }
+
+    companion object{
+        fun notFound(message: String = "Not found"): Specialty = Specialty(description = message)
+    }
 }

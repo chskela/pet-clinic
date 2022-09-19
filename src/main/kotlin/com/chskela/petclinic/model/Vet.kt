@@ -33,4 +33,8 @@ data class Vet(
     override fun toString(): String {
         return this::class.simpleName + "(id = $id , firstName = $firstName , lastName = $lastName )"
     }
+
+    companion object{
+        fun notFound(message: String = "Not found"): Vet = Vet(firstName = message, lastName = message)
+    }
 }

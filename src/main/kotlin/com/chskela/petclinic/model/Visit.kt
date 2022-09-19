@@ -11,7 +11,7 @@ import javax.persistence.Table
 @Entity
 @Table(name = "visits")
 data class Visit(
-    override var id: Long,
+    override var id: Long = -1L,
 
     @Column(name = "date")
     val localDate: LocalDate,
@@ -37,5 +37,10 @@ data class Visit(
     @Override
     override fun toString(): String {
         return this::class.simpleName + "(id = $id , localDate = $localDate , description = $description )"
+    }
+
+    companion object {
+        fun notFound(message: String = "Not found"): Visit =
+            Visit(description = message, localDate = LocalDate.now(), pet = Pet.notFound())
     }
 }
