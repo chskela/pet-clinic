@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service
 
 @Service
 @Profile("map")
-class OwnerServiceMap(private val petTypeService: PetTypeService, private val petService: PetService) :
+class OwnerMapService(private val petTypeService: PetTypeService, private val petService: PetService) :
     AbstractMapService<Owner>(), OwnerService {
     override fun findByLastName(lastName: String): Owner {
         TODO("Not yet implemented")

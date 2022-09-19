@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 
 @Service
 @Profile("map")
-class VetServiceMap(private val specialtyService: SpecialtyService) : AbstractMapService<Vet>(), VetService {
+class VetMapService(private val specialtyService: SpecialtyService) : AbstractMapService<Vet>(), VetService {
 
     override fun save(entity: Vet): Vet {
         return super.save(
