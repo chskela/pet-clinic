@@ -13,8 +13,8 @@ class VetSDJpaService(private val vetRepository: VetRepository) : VetService {
         return vetRepository.findAll().toSet()
     }
 
-    override fun findById(id: Long): Vet? {
-        return vetRepository.findById(id).orElse(Vet(firstName = "Not found", lastName = "Not found"))
+    override fun findById(id: Long): Vet {
+        return vetRepository.findById(id).orElse(Vet.notFound())
     }
 
     override fun save(entity: Vet): Vet {

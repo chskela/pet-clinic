@@ -26,6 +26,6 @@ class PetTypeSDJpaService(private val petTypeRepository: PetTypeRepository) : Pe
     }
 
     override fun findById(id: Long): PetType? {
-        return petTypeRepository.findById(id).orElse(PetType(name = "Not found"))
+        return petTypeRepository.findById(id).orElse(PetType.notFound())
     }
 }

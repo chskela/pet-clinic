@@ -18,7 +18,7 @@ class OwnerSDJpaService(private val ownerRepository: OwnerRepository) : OwnerSer
     }
 
     override fun findById(id: Long): Owner {
-        return ownerRepository.findById(id).orElse(Owner(firstName = "Not found", lastName = "Not found"))
+        return ownerRepository.findById(id).orElse(Owner.notFound())
     }
 
     override fun save(entity: Owner): Owner {
