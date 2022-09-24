@@ -4,5 +4,5 @@ import com.chskela.petclinic.model.Owner
 
 interface OwnerService : CrudService<Owner, Long> {
 
-    fun findByLastName(lastName: String): Owner
+    fun findByLastName(lastName: String): Owner?
 }

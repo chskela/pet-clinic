@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service
 @Profile("default","map")
 class OwnerMapService(private val petTypeService: PetTypeService, private val petService: PetService) :
     AbstractMapService<Owner>(), OwnerService {
-    override fun findByLastName(lastName: String): Owner {
-        TODO("Not yet implemented")
+    override fun findByLastName(lastName: String): Owner? {
+        return super.findAll().findLast { it.lastName == lastName }
     }
 
     override fun save(entity: Owner): Owner {
