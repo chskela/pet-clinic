@@ -34,6 +34,6 @@ data class Specialty(
     }
 
     companion object{
-        fun notFound(message: String = "Not found"): Specialty = Specialty(description = message)
+        fun notFound(message: String = "Not found"): Specialty = Specialty(id = -1L, description = message)
     }
 }

@@ -29,7 +29,7 @@ data class PetType(
     }
 
     companion object {
-        fun notFound(message: String = "Not found"): PetType = PetType(name = message)
+        fun notFound(message: String = "Not found"): PetType = PetType(id = -1L, name = message)
     }
 
 }

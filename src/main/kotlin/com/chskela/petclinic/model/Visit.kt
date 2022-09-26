@@ -22,7 +22,7 @@ data class Visit(
     @ManyToOne
     @JoinColumn(name = "pet_id")
     val pet: Pet
-) :  BaseEntity(id) {
+) : BaseEntity(id) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
@@ -40,6 +40,6 @@ data class Visit(
 
     companion object {
         fun notFound(message: String = "Not found"): Visit =
-            Visit(description = message, localDate = LocalDate.now(), pet = Pet.notFound())
+            Visit(id = -1L, description = message, localDate = LocalDate.now(), pet = Pet.notFound())
     }
 }

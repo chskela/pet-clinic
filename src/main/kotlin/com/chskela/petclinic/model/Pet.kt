@@ -45,6 +45,7 @@ data class Pet(
 
     companion object {
         fun notFound(message: String = "Not found"): Pet = Pet(
+            id = -1L,
             name = message,
             owner = Owner.notFound(),
             petType = PetType.notFound(),

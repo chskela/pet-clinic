@@ -35,6 +35,6 @@ data class Vet(
     }
 
     companion object{
-        fun notFound(message: String = "Not found"): Vet = Vet(firstName = message, lastName = message)
+        fun notFound(message: String = "Not found"): Vet = Vet(id = -1L, firstName = message, lastName = message)
     }
 }

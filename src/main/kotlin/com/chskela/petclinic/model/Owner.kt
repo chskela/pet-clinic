@@ -44,6 +44,6 @@ data class Owner(
     }
 
     companion object{
-        fun notFound(message: String = "Not found"): Owner = Owner(firstName = message, lastName = message)
+        fun notFound(message: String = "Not found"): Owner = Owner(id = -1L, firstName = message, lastName = message)
     }
 }
