@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping
 
 @RequestMapping("/owners")
 @Controller
-class OwnerController(private val ownerService: OwnerService ) {
+class OwnerController(private val ownerService: OwnerService) {
 
-    @RequestMapping(*arrayOf("", "/", "/index", "/index.html"))
+    @RequestMapping("", "/", "/index", "/index.html")
     fun listOwners(model: Model): String {
         model.addAttribute("owners", ownerService.findAll())
         return "owners/index"
