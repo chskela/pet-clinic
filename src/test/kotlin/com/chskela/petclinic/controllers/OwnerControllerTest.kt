@@ -5,7 +5,6 @@ import com.chskela.petclinic.services.OwnerService
 import org.hamcrest.Matchers.hasSize
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
@@ -46,7 +45,6 @@ internal class OwnerControllerTest {
             .andExpect(status().isOk)
             .andExpect(view().name("owners/index"))
             .andExpect(model().attribute("owners", hasSize<Owner>(2)))
-
     }
 
     @Test
@@ -57,8 +55,6 @@ internal class OwnerControllerTest {
             .andExpect(status().isOk)
             .andExpect(view().name("owners/index"))
             .andExpect(model().attribute("owners", hasSize<Owner>(2)))
-
-        verifyNoInteractions(ownerService)
     }
 
     @Test
